@@ -1,0 +1,31 @@
+﻿@page "/"
+@using BlazorSvrBtnLab1Net6.Components
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<MyButton>我是按鈕（11111）</MyButton>
+
+<p>
+    <MyButton2 ButtonText="我是按鈕（2）"></MyButton2>
+</p>
+
+<p>
+    <MyButton3Class ButtonText="@btnText" OnClickCallback="Button3_Click"></MyButton3Class>
+</p>
+
+@code {
+
+    string btnText = "我是按鈕（3）";
+    int count = 0;
+    void Button3_Click(MouseEventArgs e)
+    {
+        count++;
+        btnText = $"我是按鈕（3） {count}";
+    }
+}

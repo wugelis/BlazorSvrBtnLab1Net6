@@ -1,0 +1,23 @@
+﻿@inject IJSRuntime jsRuntime
+
+<button class="btn btn-primary" @onclick="ShowAlert">@ChildContent</button>
+
+<p>
+    @if(ResultState)
+    {
+        <label>您選擇確定！！</label>
+    }
+</p>
+
+@code {
+    [Parameter] public bool ResultState { get; set; } = false;
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    //[Parameter] public string ButtonText { get; set; }
+
+
+    async Task ShowAlert()
+    {
+        ResultState = await jsRuntime.InvokeAsync<bool>("confirm", "請問您是按下確定嗎？");
+    }
+}
